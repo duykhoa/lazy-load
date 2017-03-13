@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>lazy-load demo</title>
+
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../bower_components/iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../lazy-load.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic lazy-load demo</h3>
+      <demo-snippet>
+        <template>
+          <lazy-load
+            srcs="https://images.unsplash.com/uploads/1413142095961484763cf/d141726c?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=,https://images.unsplash.com/announcement-1449451517116-7854eecfdc2d?ixlib=r…ntropy&cs=tinysrgb&fit=crop&h=128&w=128&s=971ffe5ce52e66e631425110de2b92af,https://images.unsplash.com/photo-1449179391249-52328aae1c16?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop="
+          ></lazy-load>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

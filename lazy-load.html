@@ -1,0 +1,66 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<!--
+`lazy-load`
+Preload files (Especially images)
+
+Usage:
+
+  <lazy-load srcs="[[srcArray]]"></lazy-load>
+
+Attribute:
+
+  srcs - A string of images' source
+  (use ',' as delimiter)
+
+Examples:
+
+  <lazy-load srcs="./image1.png,./image2.png"></lazy-load>
+
+
+@demo demo/index.html
+-->
+
+<dom-module id="lazy-load">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+  </template>
+
+  <script>
+    const FINISH_LOAD_EVENT = 'lazy-load-finish-load-event';
+
+    Polymer({
+
+      is: 'lazy-load',
+
+
+      properties: {
+        srcs: {
+          type: String,
+        },
+        srcArray: {
+          type: Array,
+          value: []
+        }
+      },
+      _loadSrc: function(srcs, callback) {
+        for (i = 1; i < srcs.length; i += 1) {
+          img = new Image();
+          img.src = srcs[i];
+        }
+      },
+
+      ready: function() {
+        this._loadSrc(this.srcs.split(','));
+        this._loadSrc(this.srcArray);
+        this.fire(FINISH_LOAD_EVENT, {});
+        console.log("DONE");
+      }
+    });
+  </script>
+</dom-module>
