@@ -53,7 +53,7 @@ Examples:
       _loadSrc: function(srcs, callback) {
         for (i = 0; i < srcs.length; i += 1) {
           img = new Image();
-          img.onload = function() { console.log(this.height); };
+          img.onload = function() { };
           img.src = srcs[i];
         }
       },
@@ -62,11 +62,7 @@ Examples:
         this._loadSrc(this.srcs.split(','));
         this._loadSrc(this.srcArray);
 
-        $this = this;
-
-        setTimeout(function() {
-          $this.fire('iron-signal', { name: "lazyloadfinish", data: null });
-        }, 100)
+        this.fire('iron-signal', { name: "lazyloadfinish", data: null });
       }
     });
   </script>
