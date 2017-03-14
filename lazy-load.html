@@ -32,7 +32,8 @@ Examples:
   </template>
 
   <script>
-    const FINISH_LOAD_EVENT = 'lazy-load-finish-load-event';
+    const IRON_SIGNAL_PREFIX = 'iron-signal';
+    const FINISH_LOAD_EVENT = 'lazy-load-finish';
 
     Polymer({
 
@@ -59,8 +60,7 @@ Examples:
       ready: function() {
         this._loadSrc(this.srcs.split(','));
         this._loadSrc(this.srcArray);
-        this.fire(FINISH_LOAD_EVENT, {});
-        console.log("DONE");
+        this.fire(IRON_SIGNAL_PREFIX, { name: FINISH_LOAD_EVENT, data: null });
       }
     });
   </script>
