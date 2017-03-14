@@ -50,10 +50,22 @@ Examples:
           value: []
         }
       },
+
       _loadSrc: function(srcs, callback) {
-        for (i = 0; i < srcs.length; i += 1) {
+        i = 0;
+        this._recursiveLoad(srcs, i);
+      },
+
+      _recursiveLoad: function(srcs, index) {
+        if (i <= srcs.length) {
           img = new Image();
-          img.onload = function() { };
+
+          $this = this;
+
+          img.onload = function() {
+            $this._recursiveLoad(srcs, index + 1);
+          };
+
           img.src = srcs[i];
         }
       },
@@ -62,7 +74,11 @@ Examples:
         this._loadSrc(this.srcs.split(','));
         this._loadSrc(this.srcArray);
 
-        this.fire('iron-signal', { name: "lazyloadfinish", data: null });
+        $this = this;
+
+        setTimeout(function() {
+          $this.fire('iron-signal', { name: "lazyloadfinish", data: null });
+        }, 100)
       }
     });
   </script>
