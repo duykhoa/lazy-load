@@ -53,6 +53,7 @@ Examples:
       _loadSrc: function(srcs, callback) {
         for (i = 0; i < srcs.length; i += 1) {
           img = new Image();
+          img.onload = function() { console.log(this.height); };
           img.src = srcs[i];
         }
       },
